@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.model.ExpenseCategory;
 import com.example.model.ExpenseCategoryModel;
-import com.example.repository.ExpenceCategoryRepository;
 import com.example.service.ExpenseCategoryService;
 
 @RestController

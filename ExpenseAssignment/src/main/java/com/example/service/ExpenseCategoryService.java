@@ -14,9 +14,6 @@ public class ExpenseCategoryService {
 	@Autowired
 	private ExpenceCategoryRepository expenceCategoryRepository;
 
-	@Autowired
-	private ExpenseCategoryModel expenseCategoryDto;
-
 	public ExpenseCategory save(ExpenseCategoryModel expenseCategoryDto) {
 		ExpenseCategory ec = new ExpenseCategory();
 		ec.setEc_id(expenseCategoryDto.getEc_id());
@@ -28,6 +25,5 @@ public class ExpenseCategoryService {
 	public List<ExpenseCategory> getAllExpensesCategory() {
 		return expenceCategoryRepository.findAll();
 	}
-	
-	
+
 }

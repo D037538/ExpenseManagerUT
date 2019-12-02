@@ -41,7 +41,7 @@ class ExpenseCategoryTest {
 	public void testGetAllCategories() {
 		ExpenseCategory ec1 = new ExpenseCategory();
 		ec1.setEc_id(1);
-		ec1.setEc_name("food");
+		ec1.setEc_name("kkkk");
 
 		ExpenseCategory ec2 = new ExpenseCategory();
 		ec2.setEc_id(27);
