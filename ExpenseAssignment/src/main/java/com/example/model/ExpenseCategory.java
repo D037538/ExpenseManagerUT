@@ -10,7 +10,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "expensescategory")
 public class ExpenseCategory {
-	@Id
+	/*
+	 * public ExpenseCategory( int id, String name) { ec_id=id; ec_name=name; }
+	 */	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int ec_id;
 	private String ec_name;

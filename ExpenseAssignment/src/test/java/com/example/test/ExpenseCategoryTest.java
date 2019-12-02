@@ -1,43 +1,57 @@
 package com.example.test;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.junit.jupiter.api.Test;
-import org.skyscreamer.jsonassert.JSONAssert;
+import org.junit.runner.RunWith;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit4.SpringRunner;
 
+import com.example.model.ExpenseCategory;
+import com.example.model.ExpenseCategoryModel;
+import com.example.repository.ExpenceCategoryRepository;
 import com.example.service.ExpenseCategoryService;
-
+@RunWith(SpringRunner.class)
+@SpringBootTest
 class ExpenseCategoryTest {
+	@Autowired
+	private ExpenseCategoryService expenseCategoryService;
+	@Autowired
+	ExpenseCategoryModel expenseCategoryDto;
+	@MockBean
+	private ExpenceCategoryRepository expenceCategoryRepository;
 
-private ExpenseCategoryService expenseCategoryService=new ExpenseCategoryService();
-	@Test
-	void testCategorySave() throws JSONException {
-		/*
-		 * ExpenseCategoryModel expenseCategoryModel=new ExpenseCategoryModel();
-		 * expenseCategoryModel.setEc_name("gfhfgh"); ExpenseCategory
-		 * savedExpenseCategory=expenseCategoryService.save(expenseCategoryModel);
-		 * assertThat(savedExpenseCategory.getEc_name());
-		 */
-		  JSONObject actual = new JSONObject (); actual.put("ec_id", 1);
-		  actual.put("ec_name", "food");
-		  JSONAssert.assertEquals("{ec_name:\"food\", ec_id:1}", 
-				  actual,false); 
-		/*
-		 * assertEquals("{id:1,ec_name:\"food\"}", actual);
-		 */ /*
-							 * ExpenseCategory ec=new ExpenseCategory(); ec.setEc_id(1);
-							 * ec.setEc_name("food"); assertEquals("{ ec_id:1,ec_name:\"food\"}",actual);
-							 */
-		 /*
-			 * final List<ExpenseCategory> allExpenses=expenseCategoryService.;
-			 * assertThat(allExpenses).isEmpty(); assertThat(allExpenses).isEqualTo(1);
-			 */
-		}
+	/*
+	 * @Test public void testCategorySave() { ExpenseCategory ec1 = new
+	 * ExpenseCategory(); ec1.setEc_id(27); ec1.setEc_name("InternerExpenses");
+	 * System.out.println(ec1);
+	 * Mockito.when(expenceCategoryRepository.save(ec1)).thenReturn(ec1);
+	 * assertThat(expenseCategoryService.save(expenseCategoryDto)).isEqualTo(ec1);
+	 * 
+	 * }
+	 */
 
+	 @Test
+	 public void testGetAllCategories() {
+		 ExpenseCategory ec1 = new ExpenseCategory();
+			ec1.setEc_id(1);
+			ec1.setEc_name("food");
+	
+			 ExpenseCategory ec2 = new ExpenseCategory();
+				ec2.setEc_id(27);
+				ec2.setEc_name("InternerExpenses");
+				
+				List<ExpenseCategory> categoryList=new ArrayList<>();
+				categoryList.add(ec1);
+				categoryList.add(ec2);
+				Mockito.when(expenceCategoryRepository.findAll()).thenReturn(categoryList);
+				assertThat(expenseCategoryService.getAllExpensesCategory()).isEqualTo(categoryList);
+
+	 }
 }
