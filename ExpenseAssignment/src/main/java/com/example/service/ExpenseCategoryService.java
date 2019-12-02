@@ -28,4 +28,6 @@ public class ExpenseCategoryService {
 	public List<ExpenseCategory> getAllExpensesCategory() {
 		return expenceCategoryRepository.findAll();
 	}
+	
+	
 }

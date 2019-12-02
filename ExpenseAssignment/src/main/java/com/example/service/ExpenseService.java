@@ -26,5 +26,8 @@ public class ExpenseService {
 	public List<Expenses> getAllExpenses() {
 		return expensesRepository.findAll();
 	}
-
+	
+	  public List<Object[]> getListOfExpensesmonthWise() { // TODO Auto-generated method
+	   return expensesRepository.findByMonth(); }
+	 
 }
